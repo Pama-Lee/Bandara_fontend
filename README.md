@@ -1,47 +1,77 @@
-# Bandara
+# Bandara - 航迹 - 共翼天行，航迹同校。飞扬路上，同行为友
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### 1. 项目背景
 
-## Type Support for `.vue` Imports in TS
+为了方便同学们找到自己同航班的同学， 可以集中航班信息，方便出行。	
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+ 响应式
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+项目网址: 
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+用户通过微信群聊或QQ群聊的方式进入平台， 提供二维码， QQ不能发送链接（仅不能打开）， 强调免费
 
-## Customize configuration
+### 2. 项目功能（需求）
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. 用户登录， 我们目前面向XMUM学校的学生， 同学拥有学号和密码，如果使用RootJam， 会调用rootjam接口获取用户信息。
+2. 用户搜索航班信息： 用户搜索需要的航班信息
+3. 用户发布航班信息： 当系统中不存在该用户需要的航班信息， 用户可自行添加。 （系统是否进行校验？）
+4. 用户设定航班集合位置： ？？？？？
+5. 系统维护与整理航班与用户的对应关系： 系统向参与即将起飞的航班的用户发送通知。
+6. 航班详情页： 提供航班具体信息， 包括 机场 时间 航班 人数 地点 评论区 (酒店列表)
 
-## Project Setup
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
+航班信息（需要用户填写的）：
 
-```sh
-npm run dev
-```
+1. 航班号： AK111 （系统自动识别是哪个航司, 且需要判定是否是合法的编号）`https://content.airhex.com/content/logos/airlines_MF_350_100_r.png`![image-20230825204656979](/Users/pamalee/Desktop/Bandara - 航迹 -.assets/image-20230825204656979.png)
+2. 航班时间（起飞时间）
+3. 是否中转
+4. 起飞机场（用户可以输入中文名-> 转换成三位机场标识号 ）
+5. （中转机场）
+6. 目标机场 （默认 吉隆坡国际KUL）
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
+### 3. 项目分工
 
-```sh
-npm run lint
-```
-# Bandara_fontend
+1. 前端开发： 李浩远 + 万久扬
+2. 后端开发：刘运浩
+
+3. 技术总监： 李嘉珂
+4. DDL: 9月1日前
+
+
+
+### 4. 技术选型
+
+#### 其他
+
+1. 中间件： Nginx
+
+#### 前端部分
+
+技术选型： Vue3 + Pinia + Vuetify
+
+部署方式: Vercel
+
+mock 数据
+
+包管理器：pnpm + taobao镜像
+
+####  后端部分
+
+技术选型：Java + maven + SpringBoot + MySQL + MyBatis Plus + 文件处理 + 消息队列 Queue => .jar 
+
+部署方式： 通过docker部署,  在docker容器中安装.jar jvm， mysql， nginx => 镜像 ubuntu 22.05 LTS => (<150MB), 此次项目不使用devOps
+
+数据库设计：
+
+接口文档： Excel
+
+后端地址: 
+
+
+
+
