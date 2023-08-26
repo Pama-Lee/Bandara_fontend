@@ -8,7 +8,7 @@
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin: 8px;
 ">
       <v-row style="height: 100%"
       justify="center"
