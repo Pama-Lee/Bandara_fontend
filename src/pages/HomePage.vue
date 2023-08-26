@@ -1,6 +1,17 @@
 <template>
     <v-row class="row-style" justify-sm="center" justify-md="space-between">
-        <v-col md="8" sm="11" offset-md="2">
+        <v-col lg="8" md="10" sm="12" offset-md="1" offset-lg="2">
+
+          <!--  搜素框 -->
+          <v-text-field
+              density="compact"
+              variant="solo"
+              label="搜索航班号/出发城市"
+              append-inner-icon="mdi-magnify"
+              single-line
+              hide-details
+          ></v-text-field>
+            <div style="margin-bottom: 20px"></div>
            <FlightCard />
           <FlightCard />
           <FlightCard />
