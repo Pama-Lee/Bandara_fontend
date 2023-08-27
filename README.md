@@ -1,3 +1,4 @@
+![Alt text](img/Logo-text.png) 
 # Bandara - 航迹 - 共翼天行，航迹同校。飞扬路上，同行为友
 
 
