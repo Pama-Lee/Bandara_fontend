@@ -2,12 +2,12 @@
     <div class="background-container"> <!--  背景图片 -->
         <v-row class="row-style" justify-sm="center" justify-md="space-between">
             <v-col lg="8" md="10" sm="12" offset-md="1" offset-lg="2">
-
                 <!--  搜素框 -->
                 <v-text-field density="compact" variant="solo" label="搜索航班号/出发城市" append-inner-icon="mdi-magnify"
                     single-line hide-details></v-text-field>
                 <div style="margin-bottom: 20px"></div>
                 <div id="flight-list" class="flight-list">
+                    <LoadingLay v-model:active="loading" :can-cancel="false" :is-full-page="fullPage" color="blue" />
                     <FlightCard />
                     <FlightCard />
                     <FlightCard />
@@ -19,13 +19,17 @@
         </v-row>
         <footer
             style="width: 100%; height: 5vh; background-color: rgba(0, 0, 0, 0.5); color: white; line-height: 5vh;text-align: center;margin-top: 4vh;">
-                    <span>© 2023 Ministry of CODE - Cytono</span>
+            <span>© 2023 Ministry of CODE - Cytono</span>
         </footer>
     </div>
 </template>
 
 <script setup lang="ts">
 import FlightCard from '@/components/home/FlightCard.vue'
+import { ref } from 'vue';
+
+const loading = ref(true)
+const fullPage = ref(true)
 </script>
 
 <style scoped>

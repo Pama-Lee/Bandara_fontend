@@ -19,7 +19,14 @@ import App from '@/App.vue'
 
 import router from './router'
 
+import LoadingPage from '@/pages/LoadingPage.vue'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
+
 const app = createApp(App)
+app.component('LoadingCom', LoadingPage)
+app.component('LoadingLay', Loading)
 
 app.use(createPinia())
 app.use(router)
