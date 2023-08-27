@@ -28,7 +28,7 @@
 import FlightCard from '@/components/home/FlightCard.vue'
 import { ref } from 'vue';
 
-const loading = ref(true)
+const loading = ref(false)
 const fullPage = ref(true)
 </script>
 
