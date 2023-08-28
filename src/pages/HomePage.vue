@@ -8,19 +8,15 @@
                 <div style="margin-bottom: 20px"></div>
                 <div id="flight-list" class="flight-list">
                     <LoadingLay v-model:active="loading" :can-cancel="false" :is-full-page="fullPage" color="blue" />
-                    <FlightCard />
-                    <FlightCard />
-                    <FlightCard />
-                    <FlightCard />
-                    <FlightCard />
-                    <FlightCard />
+                    <FlightCard :flight="flight" />
+                    <FlightCard :flight="flight" />
+                    <FlightCard :flight="flight" />
+                    <FlightCard :flight="flight" />
+                    <FlightCard :flight="flight" />
+                    <FlightCard :flight="flight" />
                 </div>
             </v-col>
         </v-row>
-        <footer
-            style="width: 100%; height: 5vh; background-color: rgba(0, 0, 0, 0.5); color: white; line-height: 5vh;text-align: center;margin-top: 4vh;">
-            <span>© 2023 Ministry of CODE - Cytono</span>
-        </footer>
     </div>
 </template>
 
@@ -30,6 +26,16 @@ import { ref } from 'vue';
 
 const loading = ref(false)
 const fullPage = ref(true)
+
+const flight = {
+    flightNumber: 'AK1514',
+    departureTime: '21:45',
+    departureDate: '2021-10-01',
+    departureAirport: 'FZU',
+    arrivalAirport: 'KUL',
+    passengers: 20
+}
+
 </script>
 
 <style scoped>
