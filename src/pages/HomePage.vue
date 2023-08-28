@@ -3,7 +3,7 @@
       <v-row class="row-style" justify-sm="center" justify-md="space-between">
         <v-col lg="8" md="10" sm="12" offset-md="1" offset-lg="2">
           <v-text-field density="compact" variant="solo" label="搜索航班号/出发城市" append-inner-icon="mdi-magnify"
-            single-line hide-details></v-text-field>
+             hide-details></v-text-field>
           <div style="margin-bottom: 20px"></div>
           <div id="flight-list" class="flight-list" @scroll="handleListScroll">
             <LoadingLay v-model:active="loading" :can-cancel="false" :is-full-page="fullPage" color="blue" />
