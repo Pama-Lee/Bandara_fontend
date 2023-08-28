@@ -49,6 +49,8 @@ const flight = {
     background-position: center;
     height: 93vh;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .background-container::-webkit-scrollbar {
