@@ -20,7 +20,7 @@
             <ul style="padding: 20px;">
                 <li>Li HaoYuan - 前端</li>
                 <li>Wang JiuYang - 前端</li>
-                <li>Liu YuanHao - 后端</li>
+                <li>Liu YunHao - 后端</li>
                 <li>Li Jiake - 技术支持</li>
             </ul>
             <h3 style="margin-top: 20px;">📚 参与贡献</h3>
