@@ -85,7 +85,22 @@ const handleListScroll = (event: any) => {
   height: 93vh;
   overflow: hidden;
   position: relative;
-  z-index: 1;
+
+  backdrop-filter: blur(5px);
+}
+
+.background-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://api.oyohen.com/bing.php");
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  z-index: -1;
 }
 
 .background-container::before {
