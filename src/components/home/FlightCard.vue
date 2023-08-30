@@ -15,7 +15,7 @@
         <v-img :src="'https://daisycon.io/images/airline/?width=300&height=200&iata=' + airline" height="100%"
           width="100%" class="grey lighten-2" object-fit="cover" style="opacity: 0.9;" />
       </v-col>
-      <v-col cols="12" sm="10" md="10" style="padding: 20px; color: #393939">
+      <v-col cols="12" sm="10" md="10" style="padding: 20px; color: #2d2d2d">
         <v-row style="padding: 13px;" align-content="center">
           <span style="font-weight: bold; font-size: 24px;">{{ props.flight.flightNumber }}<span
               style="margin-left: 20px;font-size: 17px;">{{ props.flight.departureDate }}</span></span>
@@ -56,7 +56,7 @@
 }
 
 .mouseNotOver {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 </style>
