@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container>
+        <v-container style="padding: 40px">
             <h1 style="align-items: center; display: flex;">
                 航迹 - Bandara<img style="max-width: 100px;" src="https://ice.frostsky.com/2023/08/29/1541fdea0e681ee30ef527333c1fc9a8.png" /> ✖️ <img style="max-width: 100px;" src="https://www.mocd.cc/assets/MOC-6f7f2da6.png" /> 
             </h1>
