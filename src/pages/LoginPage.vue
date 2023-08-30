@@ -15,6 +15,12 @@
 <script setup lang="ts">
 
 setTimeout(()=>{
-    window.location.href = "https://rootjam.mocd.cc/app/978CB25A75326682?test"
+    // 如果在localhost运行，那么就跳转到测试环境
+    if (window.location.href.indexOf('localhost') !== -1) {
+        window.location.href = "https://rootjam.mocd.cc/app/978CB25A75326682?test"
+        return
+    } else {
+        window.location.href = "https://rootjam.mocd.cc/app/978CB25A75326682"
+    }
 }, 2000)
 </script>

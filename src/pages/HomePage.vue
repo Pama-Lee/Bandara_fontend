@@ -52,7 +52,7 @@ onMounted(() => {
   if (!localStorage.getItem('_token')) {
     setTimeout(()=>{
       openModal.value = true
-    }, 5000)
+    }, 8000)
   }
 })
 
