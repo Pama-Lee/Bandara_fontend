@@ -62,6 +62,8 @@
 </style>
 <script setup lang="ts">
 import { onMounted, ref, type PropType } from 'vue'
+import { request } from "@/services/api"
+import { vModelCheckbox } from 'vue';
 
 type Flight = {
   flightNumber: string
@@ -90,6 +92,9 @@ onMounted(() => {
   airline.value = props.flight.flightNumber.substring(0, 2).toLowerCase()
 })
 
+
+
+request("/api/flight/list")
 
 const width = ref(window.innerWidth)
 

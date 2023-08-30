@@ -8,6 +8,21 @@ const router = createRouter({
       name: 'home',
       component: () => import('@/pages/HomePage.vue')
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/pages/AboutUs.vue')
+    },
+    {
+      path: "/loginwithrootjam",
+      name: "rootjam",
+      component: () => import('@/pages/LoginWithRootJam.vue')
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import('@/pages/LoginPage.vue')
+    }
   ]
 })
 
