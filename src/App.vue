@@ -49,12 +49,18 @@
   
   <script setup lang="ts">
     import { ref } from 'vue'
-  
+    import {useUserStore} from "@/stores/user";
+
     const drawer = ref(true)
     const token = ref(localStorage.getItem('_token'))
     const login = ref(false)
 
     if (token.value) {
       login.value = true
+      // 登录操作
+      const userStore = useUserStore()
+      userStore.login(token.value)
     }
+
+
   </script>
