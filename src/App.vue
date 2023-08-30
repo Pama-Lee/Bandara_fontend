@@ -10,11 +10,17 @@
             </template>
             <v-list-item-title>主页</v-list-item-title>
           </v-list-item>
-          <v-list-item color="primary" @click="e => {$router.push('/about')}">
+          <v-list-item color="primary" @click="e => {$router.push('/about')}" v-if="login">
             <template v-slot:prepend>
               <v-icon>mdi-vote</v-icon>
             </template>
             <v-list-item-title>已参与</v-list-item-title>
+          </v-list-item>
+          <v-list-item color="primary" @click="e => {$router.push('/login')}" v-if="!login">
+            <template v-slot:prepend>
+              <v-icon>mdi-login</v-icon>
+            </template>
+            <v-list-item-title>登录</v-list-item-title>
           </v-list-item>
           <v-list-item color="primary" @click="e => {$router.push('/about')}">
             <template v-slot:prepend>
@@ -45,4 +51,10 @@
     import { ref } from 'vue'
   
     const drawer = ref(true)
+    const token = ref(localStorage.getItem('_token'))
+    const login = ref(false)
+
+    if (token.value) {
+      login.value = true
+    }
   </script>
