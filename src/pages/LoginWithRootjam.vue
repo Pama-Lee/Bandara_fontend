@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-
 const UrlParams = new URLSearchParams(window.location.search);
 const token = ref(UrlParams.get('token'));
 
