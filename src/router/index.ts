@@ -31,6 +31,17 @@ const router = createRouter({
         meta: {
             requireAuth: true
         }
+    },{
+      path: "/new",
+      name: "new",
+      component: () => import('@/pages/NewFlight.vue'),
+      meta: {
+        requireAuth: true
+      }
+    },{
+      path: "/joined",
+      name: "joined",
+      component: () => import('@/pages/JoinedFlight.vue'),
     }
   ]
 })
