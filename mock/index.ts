@@ -73,9 +73,9 @@ export default [
             return {
                 "code": 200,
                 "data": {
-                    "flightNumber": "AK1514",
+                    "flightNumber": "MF1514",
                     "departureTime": new Date().getTime(),
-                    "departureAirport": "FZU",
+                    "departureAirport": "KWL",
                     "arrivalAirport": "KUL",
                     "passengers": 20
                 }

@@ -31,16 +31,13 @@ export const useUserStore = defineStore('user',{
     actions: {
         // 登录
         login(token: string) {
-            console.log("登录")
             this.loading = true
             LoginService({token: token}).then((res) => {
-                if (res.code === 200) {
-                    this.username = res.data.username
-                    this.token = res.data.token
+                if (res.code === 1) {
+                    this.username = res.data.name
                     this.status = UserStatus.LOGINED
-                    if (window.localStorage) {
-                        window.localStorage.setItem('username', this.username)
-                        window.localStorage.setItem('_token', this.token)
+                    if (res.data.name == "" || res.data.name == null) {
+                        localStorage.setItem('needInfo', 'true')
                     }
                     this.loading = false
                 }
