@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container>
+        <v-container style="padding: 40px">
             <h1 style="align-items: center; display: flex;">
                 航迹 - Bandara<img style="max-width: 100px;" src="https://ice.frostsky.com/2023/08/29/1541fdea0e681ee30ef527333c1fc9a8.png" /> ✖️ <img style="max-width: 100px;" src="https://www.mocd.cc/assets/MOC-6f7f2da6.png" /> 
             </h1>
@@ -18,10 +18,10 @@
             </p>
             <h3 style="margin-top: 20px;">👨‍💻 开发者</h3>
             <ul style="padding: 20px;">
-                <li>Li HaoYuan - 前端</li>
-                <li>Wang JiuYang - 前端</li>
-                <li>Liu YunHao - 后端</li>
-                <li>Li Jiake - 技术支持</li>
+                <li>Li HaoYuan[李浩远] - 前端</li>
+                <li>Wan JiuYang[万久扬] - 前端</li>
+                <li>Liu YunHao[刘运浩] - 后端</li>
+                <li>Li Jiake[李嘉珂] - 技术支持</li>
             </ul>
             <h3 style="margin-top: 20px;">📚 参与贡献</h3>
             <p style="margin-top: 20px;">

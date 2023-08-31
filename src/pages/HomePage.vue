@@ -2,12 +2,30 @@
   <div class="background-container">
     <v-row class="row-style" justify-sm="center" justify-md="space-between">
       <v-col lg="8" md="10" sm="12" offset-md="1" offset-lg="2">
-        <v-text-field density="compact" variant="solo" label="搜索航班号/出发城市" append-inner-icon="mdi-magnify"
-          hide-details></v-text-field>
+        <v-row>
+          <v-col cols="6">
+            <v-text-field density="compact" variant="solo" label="搜索航班号" append-inner-icon="mdi-magnify" hide-details
+              v-model="searchFlight"></v-text-field>
+          </v-col>
+          <v-col cols="6">
+            <v-text-field density="compact" variant="solo" label="搜索出发城市" append-inner-icon="mdi-magnify" hide-details
+              v-model="searchCity"></v-text-field>
+          </v-col>
+        </v-row>
+
         <div style="margin-bottom: 20px"></div>
         <div id="flight-list" class="flight-list" @scroll="handleListScroll">
-          <LoadingLay v-model:active="loading" :can-cancel="false" :is-full-page="fullPage" color="blue" />
-          <FlightCard v-for="item in flightData" :key="item.id" :flight="item" />
+          <div v-if="flightData.length === 0 && !loading"
+            style="text-align: center; background-color: rgba(255, 255, 255, 0.4); padding: 20px;height: 70vh;">
+            <h1 style="font-size: 100px;opacity: 0.8;">😭</h1>
+            <h1>暂无航班</h1>
+          </div>
+          <div v-if="loading" class="loading">
+            <v-progress-circular size="large" indeterminate color="primary"></v-progress-circular>
+          </div>
+          <div v-if="!loading">
+            <FlightCard v-for="item in flightData" :key="item.id" :flight="item" />
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -35,8 +53,9 @@
   
 <script setup lang="ts">
 import FlightCard from '@/components/home/FlightCard.vue'
-import request from '@/services/api';
-import { onMounted, ref } from 'vue';
+
+import { getFlightListService } from '@/services/flight/flight';
+import { onMounted, ref, watch } from 'vue';
 
 const openModal = ref(false)
 const loading = ref(false)
@@ -44,27 +63,68 @@ const init = ref(false)
 const fullPage = ref(true)
 const flightData = ref<any>([])
 
+const searching = ref()
+
+const searchFlight = ref('')
+const searchCity = ref('')
+
+watch(searchFlight, (val) => {
+  if (val === '') {
+    getFlightList()
+  } else {
+    req()
+  } 
+})
+
+watch(searchCity, (val) => {
+  if (val === '') {
+    getFlightList()
+  } else {
+    req()
+  } 
+})
+
+const req = async () => {
+  loading.value = true
+    clearInterval(searching.value)
+    searching.value = setInterval(() => {
+
+      getFlightListService({ 
+        flightNumber: searchFlight.value,
+        city: searchCity.value
+      }).then(res => {
+        if (res.data) {
+          flightData.value = res.data
+        }
+        loading.value = false
+        clearInterval(searching.value)
+      })
+    }, 1000)
+}
+
 onMounted(() => {
   if (init.value) return
   loading.value = true
   getFlightList()
 
   if (!localStorage.getItem('_token')) {
-    setTimeout(()=>{
+    setTimeout(() => {
       openModal.value = true
     }, 8000)
   }
 })
 
-const go2Login = ()=> {
+const go2Login = () => {
   window.location.href = "/login"
 }
 
 const getFlightList = () => {
   loading.value = true
-  request.get('/api/flight/list').then((res) => {
-    console.log(res.data)
-    flightData.value = res.data.list
+  getFlightListService(null).then(res => {
+    if (res.data) {
+      flightData.value = res.data
+    }
+
     loading.value = false
   })
 }
@@ -81,24 +141,29 @@ const handleListScroll = (event: any) => {
   padding-top: 20px;
 }
 
+.loading {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .background-container {
-  background-image: url("https://picsum.photos/1920/1080?blur");
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  background-image: url("https://api.oyohen.com/bing.php");
+  background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
-  height: 93vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .background-container::-webkit-scrollbar {
   display: none;
 }
 
-.flight-list {
-  overflow-y: scroll;
-  height: 75vh;
-}
+
 
 .flight-list::-webkit-scrollbar {
   width: 4px;

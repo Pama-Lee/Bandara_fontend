@@ -13,22 +13,6 @@ const flight = {
     passengers: 20
 }
  */
-
-Mock.mock('api/flight/list', 'get', {
-    "code": 200,
-    "data": {
-        "list|10": [{
-            // AK或者CA或者MU开头的航班号
-            "flightNumber": /[AK|CA|MU]\d{4}/,
-            "departureTime": "21:45",
-            "departureDate": "2021-10-01",
-            "departureAirport": "FZU",
-            "arrivalAirport": "KUL",
-            "passengers": 20
-        }]
-    }
-})
-
 export default [
     {
         url: '/api/flight/list',
@@ -57,5 +41,45 @@ export default [
                 }
             };
         }
-    } 
+    },{
+        url: '/api/login',
+        method: 'post',
+        response: () => {
+            return {
+                "code": 200,
+                "data": {
+                    "username": "admin",
+                    "token": "admin"
+                }
+            };
+        }
+    },{
+        url: '/api/rootjam/login',
+        method: 'post',
+        response: () => {
+            return {
+                "code": 200,
+                "data": {
+                    "username": "rootjam",
+                    "token": "rootjam",
+                }
+            }
+        }
+    },{
+        // url: '/api/flight/detail',
+        url: '/api/flight/detail',
+        method: 'get',
+        response: () => {
+            return {
+                "code": 200,
+                "data": {
+                    "flightNumber": "MF1514",
+                    "departureTime": new Date().getTime(),
+                    "departureAirport": "KWL",
+                    "arrivalAirport": "KUL",
+                    "passengers": 20
+                }
+            }
+        }
+    }
 ]

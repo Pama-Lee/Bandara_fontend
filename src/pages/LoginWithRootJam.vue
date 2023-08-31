@@ -13,16 +13,28 @@
 </template>
 
 <script setup lang="ts">
+import { LoginWithRootJam } from '@/services/user/user';
 import { ref } from 'vue';
 
 const UrlParams = new URLSearchParams(window.location.search);
 const token = ref(UrlParams.get('token'));
 
 if (token.value) {
-    localStorage.setItem('_token', token.value);
-    setTimeout(() => {
-        window.location.href = "/";
-    }, 2000)
+
+    LoginWithRootJam(token.value).then(res => {
+        if (res.code !== 1) {
+            alert("登录失败，请重试");
+            return;
+        } else {
+            localStorage.setItem('_token', res.data.token);
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 2000)
+        }
+    })
+
+
+
 }
 
 </script>
