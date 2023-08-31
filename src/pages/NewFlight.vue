@@ -270,11 +270,10 @@ const getAirportList = (keywrods: string) => {
     })
 }
 
-
 const flightNumberRules = ref([
     (v: string) => !!v || '请填写航班号',
-    // 前两位字母, 后为数字
-    (v: string) => /^[A-Z]{1}\d+$/.test(v) || '航班号格式不正确, 例: AK2020',
+    // 前一位或者两位是字母, 后面是数字
+    (v: string) => /^[A-Z]{1,2}[0-9]+$/.test(v) || '航班号格式不正确, 例: AK2020',
     (v: string) => v.length <= 10 || '航班号长度不能超过10个字符',
 ])
 

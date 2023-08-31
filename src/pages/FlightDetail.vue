@@ -104,14 +104,35 @@
     </v-card>
 
   </div>
+  <v-dialog width="400px" v-model="openModal">
+    <v-card style="padding: 20px;">
+      <v-card-title>
+        您还没有加入航班
+      </v-card-title>
+      <v-card-text>
+        <v-alert type="info" style="margin: 10px;">
+          如您不是该航班的乘客,请勿加入航班
+        </v-alert>
+        加入航班后即可进行:
+        <ul>
+          <li>查看航班详情</li>
+          <li>航班讨论</li>
+          <li>查看参与的用户</li>
+        </ul>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn color="primary" @click="router.push('/')">返回</v-btn>
+        <v-btn color="primary" @click="join">加入</v-btn>
+      </v-card-actions>
+    </v-card>
+    </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
-import { getFlightDetail, getFlightCommentService, sendFlightCommentService } from "@/services/flight/flight";
+import { getFlightDetail, getFlightCommentService, sendFlightCommentService, joinFlightService } from "@/services/flight/flight";
 import request from "@/services/api";
-
 
 
 // 获取router中的参数
@@ -119,6 +140,7 @@ const router = useRouter();
 const uuid = ref<any>(router.currentRoute.value.params.uuid)
 
 const flightData = ref<any>({})
+const openModal = ref(false)
 
 const flightNum = ref("")
 const airlineName = ref("查询中...")
@@ -155,6 +177,11 @@ onMounted(async () => {
   const data = await getFlightDetail({
     uuid: uuid.value,
   })
+
+  if (data.code != 1) {
+     openModal.value = true
+  }
+
   flightData.value = data.data
 
   flightNum.value = data.data.flightNumber
@@ -191,6 +218,20 @@ const sendComment = () => {
   })
 }
 
+const join =async () => {
+  const d = await joinFlightService({
+    uuid: uuid.value,
+  })
+  if (d.code == 1) {
+    openModal.value = false
+    // 刷新
+    location.reload()
+  } else{
+    alert("加入失败，请稍后再试")
+    
+  }
+
+}
 
 </script>
 
