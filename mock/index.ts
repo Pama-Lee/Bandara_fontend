@@ -65,5 +65,21 @@ export default [
                 }
             }
         }
+    },{
+        // url: '/api/flight/detail',
+        url: '/api/flight/detail',
+        method: 'get',
+        response: () => {
+            return {
+                "code": 200,
+                "data": {
+                    "flightNumber": "AK1514",
+                    "departureTime": new Date().getTime(),
+                    "departureAirport": "FZU",
+                    "arrivalAirport": "KUL",
+                    "passengers": 20
+                }
+            }
+        }
     }
 ]
