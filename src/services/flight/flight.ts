@@ -45,5 +45,6 @@ export async function joinFlightService(params: any) {
     return request("/flight/join", {
         method: "POST",
         data: params,
+        requestType: "form"
     });
 }
