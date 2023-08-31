@@ -83,39 +83,15 @@ const handleListScroll = (event: any) => {
 
 .background-container {
   height: 93vh;
-  overflow: hidden;
-  position: relative;
-
-  backdrop-filter: blur(5px);
-}
-
-.background-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  overflow: hidden;
   background-image: url("https://api.oyohen.com/bing.php");
+  background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
-  filter: blur(5px);
-  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.background-container::before {
-    content: "";
-    position: absolute;
-    left: -3px;  /* 移除因为blur */
-    top: -3px;   /* 而产生的白边 */
-    width: 110%;
-    height: 97vh;
-    background-image: url("https://api.oyohen.com/bing.php");
-    background-size: cover;
-    background-position: center center;
-    filter: blur(1px);
-    z-index: -1;
-}
 .background-container::-webkit-scrollbar {
   display: none;
 }
