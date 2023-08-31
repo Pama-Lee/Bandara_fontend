@@ -43,8 +43,7 @@ export async function sendFlightCommentService(params: any) {
 // 加入航班
 export async function joinFlightService(params: any) {
     return request("/flight/join", {
-        method: "POST",
-        data: params,
-        requestType: "form"
+        method: "GET",
+        params: params,
     });
 }
