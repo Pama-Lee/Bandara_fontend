@@ -1,8 +1,8 @@
 import { extend } from "umi-request";
 
 export const request = extend({
-     prefix: "https://flightapi.mocd.cc",
-    //prefix: "http://localhost:9999",
+    // 检查是否在localhost运行
+     prefix: (window.location.href.indexOf("localhost") > -1) ? "http://localhost:9999" : "https://flightapi.mocd.cc",
     timeout: 7000,
     headers: {
         "Content-Type": "application/json",
