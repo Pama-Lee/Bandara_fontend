@@ -26,31 +26,30 @@
                                         </h2>
                                     </v-row>
                                     <v-row>
-                                        <h3 style="">
-                                            <span style="margin-left: 15px;">{{ item.time }}</span>
+                                        <h3>
+                                            <span style="margin-left: 15px;">{{ item.time.substring(0,5) }}</span>
+                                        </h3>
+                                        <br v-if="width < 600">
+                                        <h3>
+                                            <span style="margin-left: 15px;">{{ item.time.substring(6) }}</span>
                                         </h3>
                                     </v-row>
                                 </v-col>
                                 <v-col cols="4" align-self="center">
                                     <span>航班状态： </span>
+                                    <br v-if="width < 600">
                                     <span style="font-weight: bold;">{{ item.state }}</span>
-                                </v-col>
-                                <v-col cols="2" align-self="center">
-                                    <v-btn variant="text" @click="go2Detail">
-                                        <v-icon size="24px" icon="mdi-information-outline"></v-icon>
-                                    </v-btn>
                                 </v-col>
                             </v-row>
                         </v-col>
                     </v-row>
-                
             </v-banner>
         </v-card>
     </div>
 </template>
 
 <script setup lang="ts">
-
+import { onMounted, ref } from 'vue'
 //测试填充数据
 const flight = [
     { 
@@ -75,10 +74,16 @@ const flight = [
     }
 ]
 
-const go2Detail = () => {
-  //router.push("/detail/" + props.flight.uuid)
-}
+const width = ref(window.innerWidth)
 
+// 当屏幕大小改变时
+onMounted(() => {
+  // 监听屏幕大小改变
+  window.addEventListener('resize', () => {
+    // 获取屏幕宽度
+    width.value = window.innerWidth
+  })
+})
 </script>
 
 <style scoped>
