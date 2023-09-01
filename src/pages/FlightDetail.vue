@@ -286,7 +286,7 @@ const leave = () => {
       uuid: uuid.value,
     }).then(res => {
       if (res.code != 1) {
-        alert("退出失败，原因：" + res.message)
+        alert("退出失败，原因：" + res.msg)
         return
       } else {
         alert("退出成功")
