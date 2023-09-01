@@ -35,7 +35,7 @@
                                         </h3>
                                     </v-row>
                                 </v-col>
-                                <v-col cols="4" align-self="center">
+                                <v-col cols="6" align-self="center">
                                     <span>航班状态： </span>
                                     <br v-if="width < 600">
                                     <span style="font-weight: bold;">{{ item.state }}</span>
