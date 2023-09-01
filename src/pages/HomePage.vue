@@ -86,8 +86,8 @@ watch(searchCity, (val) => {
 
 const req = async () => {
   loading.value = true
-    clearInterval(searching.value)
-    searching.value = setInterval(() => {
+    clearTimeout(searching.value)
+    searching.value = setTimeout(() => {
 
       getFlightListService({ 
         flightNumber: searchFlight.value,
@@ -97,7 +97,7 @@ const req = async () => {
           flightData.value = res.data
         }
         loading.value = false
-        clearInterval(searching.value)
+        clearTimeout(searching.value)
       })
     }, 1000)
 }
