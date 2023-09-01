@@ -12,6 +12,9 @@
               v-model="searchCity"></v-text-field>
           </v-col>
         </v-row>
+        <v-alert type="info" style="margin-top: 20px;" v-if="searchFlight == '' && searchCity == ''">
+          <span>本页仅显示前20条记录</span>
+          </v-alert>  
 
         <div style="margin-bottom: 20px"></div>
         <div id="flight-list" class="flight-list" @scroll="handleListScroll">
