@@ -152,6 +152,7 @@ const handleListScroll = (event: any) => {
   height: 100vh;
   width: 100%;
   overflow: auto;
+  overflow-x: hidden;
   background-image: url("https://api.oyohen.com/bing.php");
   background-blend-mode: multiply;
   background-size: cover;

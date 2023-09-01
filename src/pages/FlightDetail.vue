@@ -84,7 +84,9 @@
         hide-details></v-text-field>
         </v-col>
         <v-col cols="3" md="2" lg="1">
-          <v-btn style="margin-top: 20px;" color="primary" block @click="sendComment">发送</v-btn>
+          <v-btn style="margin-top: 20px;" color="primary" block @click="sendComment">
+            <v-icon icon="mdi-send"></v-icon>
+          </v-btn>
           </v-col>
       </v-row>
       <v-list style="margin-top: 20px;">
