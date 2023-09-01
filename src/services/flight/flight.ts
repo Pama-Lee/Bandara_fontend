@@ -47,3 +47,11 @@ export async function joinFlightService(params: any) {
         params: params,
     });
 }
+
+// 退出该航班
+export async function quitFlightService(params: any) {
+    return request("/flight/quit", {
+        method: "GET",
+        params: params,
+    });
+}
