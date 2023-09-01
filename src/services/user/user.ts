@@ -23,3 +23,11 @@ export async function completeUserInfo(params: any) {
     data: params,
   });
 }
+
+// 获取用户加入的航班列表
+export async function getUserFlightList(params: any) {
+  return request("/user/joined", {
+    method: "GET",
+    params: params,
+  });
+}
