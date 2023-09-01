@@ -22,6 +22,7 @@
             style="text-align: center; background-color: rgba(255, 255, 255, 0.4); padding: 20px;height: 70vh;">
             <h1 style="font-size: 100px;opacity: 0.8;">😭</h1>
             <h1>暂无航班</h1>
+            <v-btn color="primary" @click="router.push('/new')" style="margin-top: 20px;">点击前去创建你的航班</v-btn>
           </div>
           <div v-if="loading" class="loading">
             <v-progress-circular size="large" indeterminate color="primary"></v-progress-circular>
@@ -56,6 +57,7 @@
   
 <script setup lang="ts">
 import FlightCard from '@/components/home/FlightCard.vue'
+import router from '@/router';
 
 import { getFlightListService } from '@/services/flight/flight';
 import { onMounted, ref, watch } from 'vue';
