@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import {LoginService} from "@/services/user/user";
+import router from '@/router';
 
 // 用户状态
 export enum UserStatus {
@@ -40,6 +41,12 @@ export const useUserStore = defineStore('user',{
                         localStorage.setItem('needInfo', 'true')
                     }
                     this.loading = false
+                } else {
+                    this.loading = false
+                    localStorage.removeItem('_token')
+                    localStorage.removeItem('username')
+
+                    router.push("/login")
                 }
             }).catch(err => {
                 console.log(err)
