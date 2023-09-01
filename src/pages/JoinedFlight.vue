@@ -5,7 +5,7 @@
             <v-divider thickness="3" color="rgba(0,0,0)" style="margin-top: 20px;margin-bottom: 20px;"></v-divider>
             <v-banner v-for="item in flight" :key="item.name">
                     <v-row>
-                        <v-col cols="2">
+                        <v-col cols="3">
                             <img :src="'https://daisycon.io/images/airline/?width=300&height=300&iata='+item.name.substring(0, 2)" style="
                                 border-radius: 50%;
                                 padding: 5px;
@@ -17,7 +17,7 @@
                                 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
                             "/>
                         </v-col>
-                        <v-col cols="10" align-self="center">
+                        <v-col cols="9" align-self="center">
                             <v-row>
                                 <v-col cols="6" align-self="center">
                                     <v-row>
