@@ -190,6 +190,9 @@ const selectAirport = (item: any) => {
         confirmArrivalAirportName.value = item.name
         confirmArrivalAirportCode.value = item.code
     }
+
+    // 清空搜索框
+    flightAirport.value = ''
 }
 
 const resetAirport = () => {
