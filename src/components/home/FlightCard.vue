@@ -106,9 +106,6 @@ onMounted(() => {
 })
 
 
-
-request("/api/flight/list")
-
 const width = ref(window.innerWidth)
 
 // 当屏幕大小改变时
